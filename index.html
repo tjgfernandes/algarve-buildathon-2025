@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algarve Buildathon 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-dark: #101828;
+            --text-light: #F9FAFB;
+            --text-secondary: #D0D5DD;
+            --primary: #8A42DB;
+            --secondary: #FFD166;
+            --accent-green: #06D6A0;
+            --accent-orange: #F79009;
+            --accent-blue: #3E54D3;
+            --card-bg: #1D2939;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid #344054;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+        }
+        
+        nav {
+            background-color: rgba(16, 24, 40, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #344054;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #344054;
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .tool-category {
+            margin-bottom: 3rem;
+        }
+        
+        .tool-category h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #344054;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .tool-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .tool-card .benefit {
+            font-style: italic;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+            min-height: 40px;
+        }
+
+        .tool-card p {
+            color: var(--text-secondary);
+            flex-grow: 1;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card a {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .tool-card a:hover {
+            background-color: #6d2fb9;
+        }
+
+        .rules-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .rules-list li {
+            background: var(--card-bg);
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .schedule-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .schedule-day {
+            flex: 1;
+            min-width: 300px;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .schedule-day h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .schedule-day ul {
+            list-style: none;
+        }
+        
+        .schedule-day li {
+            display: flex;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #344054;
+        }
+        
+        .schedule-day li:last-child {
+            border-bottom: none;
+        }
+        
+        .schedule-day .time {
+            color: var(--accent-orange);
+            font-weight: 600;
+            margin-right: 1.5rem;
+            min-width: 100px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Algarve Buildathon 2025</h1>
+            <h2>AI Agents for Regional Challenges</h2>
+            <p>
+                The Algarve Buildathon brings together innovators, students, and professionals to create
+                AI-powered solutions for real regional challenges. Using no-code AI Tools, teams will design prototypes that can evolve into lasting projects and startups.
+            </p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#tools">Tool Stack</a></li>
+            <li><a href="#rules">Rules</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section id="tools">
+            <h2 class="section-title">The AI Buildathon Tool Stack</h2>
+            
+            <div class="tool-category">
+                <h3>Planning & Ideation</h3>
+                <div class="tool-grid">
+                    <div class="tool-card">
+                        <h4>Miro</h4>
+                        <div class="benefit">Visual Whiteboarding</div>
+                        <p>Collaborative online space for brainstorming, flow-charting, and mind-mapping.</p>
+                        <a href="https://miro.com/" target="_blank" rel="noopener noreferrer">Visit Miro</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Excalidraw</h4>
+                        <div class="benefit">Quick Diagramming</div>
+                        <p>Virtual whiteboard for creating hand-drawn style diagrams and wireframes fast.</p>
+                        <a href="https://excalidraw.com/" target="_blank" rel="noopener noreferrer">Visit Excalidraw</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>NotebookLM</h4>
+                        <div class="benefit">AI Research Assistant</div>
+                        <p>AI tool that analyzes your documents and notes to synthesize new ideas and insights.</p>
+                        <a href="https://notebooklm.google.com/" target="_blank" rel="noopener noreferrer">Visit NotebookLM</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Gemini</h4>
+                        <div class="benefit">Creative LLM</div>
+                        <p>Google's most capable LLM for content generation, complex problem-solving, and logic.</p>
+                        <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">Visit Gemini</a>
+                    </div>
+                     <div class="tool-card">
+                        <h4>ChatGPT</h4>
+                        <div class="benefit">General AI Brain</div>
+                        <p>Versatile tool for coding assistance, brainstorming, and debugging.</p>
+                        <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Visit ChatGPT</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Manus.im</h4>
+                        <div class="benefit">Intelligent Execution</div>
+                        <p>Autonomous AI agent that thinks, plans, and executes complex tasks for you.</p>
+                        <a href="https://manus.im" target="_blank" rel="noopener noreferrer">Visit Manus.im</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Perplexity</h4>
+                        <div class="benefit">Cited Research</div>
+                        <p>Conversational answer engine that provides accurate summaries with cited sources.</p>
+                        <a href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">Visit Perplexity</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3>Prototyping & Development</h3>
+                <div class="tool-grid">
+                    <div class="tool-card">
+                        <h4>Bolt.new</h4>
+                        <div class="benefit">Best for Rapid Prototyping</div>
+                        <p>Quickly spins up new web projects with minimal configuration.</p>
+                        <a href="https://bolt.new/" target="_blank" rel="noopener noreferrer">Visit Bolt.new</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>v0</h4>
+                        <div class="benefit">Best for UI Prototyping</div>
+                        <p>Generates production-ready React/Next.js UI components from text prompts.</p>
+                        <a href="https://v0.app/" target="_blank" rel="noopener noreferrer">Visit v0</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Lovable</h4>
+                        <div class="benefit">Design-first App Dev</div>
+                        <p>Focuses on simple, design-first app development for non-technical team members.</p>
+                        <a href="https://lovable.dev/" target="_blank" rel="noopener noreferrer">Visit Lovable</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Cursor</h4>
+                        <div class="benefit">AI-first Code Editor</div>
+                        <p>An AI-first code editor designed for writing, debugging, and understanding large codebases.</p>
+                        <a href="https://cursor.com/" target="_blank" rel="noopener noreferrer">Visit Cursor</a>
+                    </div>
+                     <div class="tool-card">
+                        <h4>Google AI Studio</h4>
+                        <div class="benefit">Configure Google's AI</div>
+                        <p>The go-to environment for testing, prototyping, and configuring Google's AI models.</p>
+                        <a href="https://ai.dev/" target="_blank" rel="noopener noreferrer">Visit AI Studio</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Replit</h4>
+                        <div class="benefit">Best for Collaborative Coding</div>
+                        <p>An online IDE for building, deploying, and sharing code in real-time.</p>
+                        <a href="https://replit.com/" target="_blank" rel="noopener noreferrer">Visit Replit</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Bubble.io</h4>
+                        <div class="benefit">No-code Web Apps</div>
+                        <p>A popular, powerful platform for building complete, custom web applications without code.</p>
+                        <a href="https://bubble.io/" target="_blank" rel="noopener noreferrer">Visit Bubble.io</a>
+                    </div>
+                     <div class="tool-card">
+                        <h4>Firebase Studio</h4>
+                        <div class="benefit">Visual Firebase Tool</div>
+                        <p>Visual tool for prototyping and developing apps using Firebase services (database, auth, etc.).</p>
+                        <a href="https://firebase.studio/" target="_blank" rel="noopener noreferrer">Visit Firebase Studio</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3>Design</h3>
+                <div class="tool-grid">
+                    <div class="tool-card">
+                        <h4>Figma Make</h4>
+                        <div class="benefit">Collaborative Design</div>
+                        <p>The standard platform for designing user interfaces, creating component libraries, and visual prototyping.</p>
+                        <a href="https://www.figma.com/make" target="_blank" rel="noopener noreferrer">Visit Figma Make</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>UX Pilot AI</h4>
+                        <div class="benefit">AI Design Assistant</div>
+                        <p>A tool to assist with user experience (UX) research, design flows, and pattern generation.</p>
+                        <a href="https://uxpilot.ai/" target="_blank" rel="noopener noreferrer">Visit UX Pilot AI</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Stitch</h4>
+                        <div class="benefit">Speeds up UI design</div>
+                        <p>AI tool that transforms text or sketches into polished UI designs, making prototyping and design-to-code faster and easier.</p>
+                        <a href="https://stitch.withgoogle.com/" target="_blank" rel="noopener noreferrer">Visit Stitch</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3>Platforms & Deployment</h3>
+                <div class="tool-grid">
+                    <div class="tool-card">
+                        <h4>Google Cloud Platform (GCP)</h4>
+                        <div class="benefit">Scalable Infrastructure</div>
+                        <p>Cloud services for hosting, data processing, machine learning, and leveraging specialized AI services.</p>
+                        <a href="https://cloud.google.com/" target="_blank" rel="noopener noreferrer">Visit GCP</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Github Pages</h4>
+                        <div class="benefit">Free Hosting</div>
+                        <p>Host websites directly from a GitHub repository for free.</p>
+                        <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">Visit Github Pages</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tool-category">
+                <h3>AI Agent Development Resources</h3>
+                <div class="tool-grid">
+                     <div class="tool-card">
+                        <h4>Google Startup Technical Guide - AI Agent</h4>
+                        <div class="benefit">Technical Blueprint</div>
+                        <p></p>
+                        <a href="https://tinyurl.com/5dzx7525" target="_blank" rel="noopener noreferrer">Read Guide</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Building Agents with Gemini & Open Source</h4>
+                        <div class="benefit">Google's Guidance</div>
+                        <p></p>
+                        <a href="https://developers.googleblog.com/en/building-agents-google-gemini-open-source-frameworks/" target="_blank" rel="noopener noreferrer">Read Blog</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Agent Development Kit (ADK) Docs</h4>
+                        <div class="benefit">Google Framework</div>
+                        <p></p>
+                        <a href="https://google.github.io/adk-docs/" target="_blank" rel="noopener noreferrer">View Docs</a>
+                    </div>
+                     <div class="tool-card">
+                        <h4>OpenAI Tracks: Building Agents</h4>
+                        <div class="benefit">Learning Path</div>
+                        <p></p>
+                        <a href="https://developers.openai.com/tracks/building-agents/" target="_blank" rel="noopener noreferrer">View Track</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>LlamaIndex Agent Framework</h4>
+                        <div class="benefit">Data Connection</div>
+                        <p></p>
+                        <a href="https://developers.llamaindex.ai/python/framework/understanding/agent" target="_blank" rel="noopener noreferrer">View Framework</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Hugging Face Agents Course</h4>
+                        <div class="benefit">Education</div>
+                        <p></p>
+                        <a href="https://huggingface.co/learn/agents-course/unit2/introduction" target="_blank" rel="noopener noreferrer">Take Course</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Awesome AI Agents GitHub Repo</h4>
+                        <div class="benefit">Curated Tools</div>
+                        <p></p>
+                        <a href="https://github.com/e2b-dev/awesome-ai-agents" target="_blank" rel="noopener noreferrer">View Repo</a>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Principles of Building AI Agents</h4>
+                        <div class="benefit">Book, Agents, Context, Integration</div>
+                        <p></p>
+                        <a href="https://tinyurl.com/ms26rraa" target="_blank" rel="noopener noreferrer">Read Principles</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="rules">
+            <h2 class="section-title">Team Building / Rules</h2>
+            <ul class="rules-list">
+                <li>You can register as an individual or as part of a team (up to 3 people).</li>
+                <li>Solo registrations will form teams.</li>
+                <li>The organization may add team members (student or professional) to a max of 4 people, on the day of the event to encourage collaboration.</li>
+                <li>Both students and professionals are encouraged to join, diverse teams are strongly valued.</li>
+                <li>Teams own their projects but agree that the organization may showcase them for communication and impact purposes.</li>
+                <li>Projects should not be pre-existing and should be exclusively developed during the buildathon.</li>
+            </ul>
+        </section>
+
+        <section id="schedule">
+            <h2 class="section-title">Weekend Schedule</h2>
+            <div class="schedule-container">
+                <div class="schedule-day">
+                    <h3>Saturday</h3>
+                    <ul>
+                        <li><span class="time">09:15 - 10:00</span> Registration & Breakfast</li>
+                        <li><span class="time">10:00 - 10:15</span> Opening & Hackathon Brief</li>
+                        <li><span class="time">10:15 - 11:00</span> Team Formation</li>
+                        <li><span class="time">10:45 - 13:00</span> Phase 1: Ideation & Concept Validation</li>
+                        <li><span class="time">13:00 - 14:00</span> Lunch Break</li>
+                        <li><span class="time">14:00 - 17:00</span> Phase 2: MVP Development</li>
+                        <li><span class="time">17:00 - 18:00</span> Phase 3: Mentorship & Feedback</li>
+                        <li><span class="time">18:00 - 19:00</span> Team Checkin</li>
+                        <li><span class="time">19:00 - 20:00</span> Phase 4: Demo Preparation</li>
+                        <li><span class="time">20:00</span> Wrap-Up Day 1</li>
+                    </ul>
+                </div>
+                <div class="schedule-day">
+                    <h3>Sunday</h3>
+                    <ul>
+                       <li><span class="time">09:00 - 09:30</span> Doors Open & Breakfast</li>
+                       <li><span class="time">09:30 - 10:30</span> Phase 4: Demo Preparation (Part 2)</li>
+                       <li><span class="time">10:30 - 12:00</span> Mentorship / Last-Minute Refinements</li>
+                       <li><span class="time">12:00 - 13:00</span> Lunch Break</li>
+                       <li><span class="time">13:00 - 15:00</span> Demo Presentations / Pitches to Judges</li>
+                       <li><span class="time">15:00 - 16:00</span> Judging & Deliberation</li>
+                       <li><span class="time">16:00 - 17:00</span> Awards Ceremony & Closing</li>
+                       <li><span class="time">17:00</span> Event Ends</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Lets go Algarve Buildathon!!</p>
+    </footer>
+
+    <script type="module" src="index.tsx"></script>
+</body>
+</html>
